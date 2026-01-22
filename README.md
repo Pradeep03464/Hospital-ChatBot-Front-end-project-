@@ -1,61 +1,16 @@
-# Hospital-ChatBot-Front-end-project-
-🧱 Architecture
+# React + Vite
 
-The application follows a chatbot-first, intent-driven front-end architecture.
-There is no page navigation or backend—the chatbot itself acts as the complete user interface.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-High-level flow:
+Currently, two official plugins are available:
 
-User Input → Gemini AI → Intent Resolver → UI Renderer → Local State Update
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
+## React Compiler
 
-Key architectural principles:
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-Single-page conversational UI
+## Expanding the ESLint configuration
 
-Intent-based UI rendering
-
-Local in-memory state management
-
-Modular and reusable components
-
-Conversation context preserved throughout the session
-
-All hospital data (reports, appointments, pregnancy records, vitals) is stored and managed in local React state using the provided mock dataset.
-
-🔁 Intent Flow
-
-The user types a natural language message in the chat.
-
-The message is sent to Gemini AI for intent classification.
-
-Gemini AI returns a structured JSON containing:
-
-Detected intent
-
-Extracted entities (e.g., report ID, date)
-
-The intent resolver maps the intent to a specific UI component.
-
-The chatbot renders the corresponding UI (cards, tables, forms) inline.
-
-Any CRUD action updates the local state and reflects instantly in the chat.
-
-This approach ensures a smooth, uninterrupted conversational experience.
-
-🤖 How AI Is Integrated
-
-Gemini AI is used only for intelligence, not for data storage or UI rendering.
-
-AI responsibilities:
-
-Classify user intent
-
-Extract relevant entities from natural language input
-
-Model used:
-
-gemini-1.5-flash
-
-The front-end sends a prompt to Gemini AI and expects a JSON-only response.
-If AI fails or returns an unknown intent, the system falls back gracefully with a help response, ensuring the UI never breaks.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
